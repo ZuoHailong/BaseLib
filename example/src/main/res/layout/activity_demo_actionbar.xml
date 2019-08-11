@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <TextView
+        android:id="@+id/tvLightMode"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:text="Light Mode："
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/guideLine"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/rgLightMode"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toRightOf="@id/guideLine"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/rbLightModeTrue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="true" />
+
+        <RadioButton
+            android:id="@+id/rbLightModeFalse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:checked="true"
+            android:text="false" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvActionBarBg"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:text="ActionBar背景"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/guideLine"
+        app:layout_constraintTop_toBottomOf="@id/tvLightMode" />
+
+    <RadioGroup
+        android:id="@+id/rgActionBarBg"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toRightOf="@id/guideLine"
+        app:layout_constraintTop_toBottomOf="@id/tvLightMode">
+
+        <RadioButton
+            android:id="@+id/rbActionBarBgColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置颜色" />
+
+        <RadioButton
+            android:id="@+id/rbActionBarBgImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:text="设置图片" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvActionBarType"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:text="ActionBar类型"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/guideLine"
+        app:layout_constraintTop_toBottomOf="@id/tvActionBarBg" />
+
+    <RadioGroup
+        android:id="@+id/rgActionBarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toRightOf="@id/guideLine"
+        app:layout_constraintTop_toBottomOf="@id/tvActionBarBg">
+
+        <RadioButton
+            android:id="@+id/rbActionBarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="标题文本" />
+
+        <RadioButton
+            android:id="@+id/rbActionBarInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:text="搜索框" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvTitleBarVisiable"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:text="TitleBar是否可见"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/guideLine"
+        app:layout_constraintTop_toBottomOf="@id/tvActionBarType" />
+
+    <RadioGroup
+        android:id="@+id/rgTitleBarVisiable"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toRightOf="@id/guideLine"
+        app:layout_constraintTop_toBottomOf="@id/tvActionBarType">
+
+        <RadioButton
+            android:id="@+id/rbTitleBarVisiable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="可见" />
+
+        <RadioButton
+            android:id="@+id/rbTitleBarGone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:text="不可见" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvLeftText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:padding="20dp"
+        android:text="文本与图标的显示隐藏、文字大小、文字颜色、图标颜色、图标图片等请各位自行测试"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleBarVisiable" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

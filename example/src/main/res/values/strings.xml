@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BaseLib Demo</string>
+    <string name="nodata">没有数据，这可怎么办呀</string>
+    <string name="toast_default">默认样式</string>
+    <string name="toast_text">改变文字颜色和文字大小</string>
+    <string name="toast_bgcolor">改变背景色</string>
+    <string name="toast_bgres">改变背景图\n（图片宽高要通过icon宽高像素控制）</string>
+    <string name="toast_gravity">改变位置</string>
+</resources>

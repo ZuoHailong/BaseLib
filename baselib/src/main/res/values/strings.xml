@@ -1,0 +1,17 @@
+<resources>
+
+    <!--*************************************************** 公共 ***************************************************-->
+    <string name="baselib_common_confirm">确定</string>
+    <string name="baselib_common_nodata">暂&#160;无&#160;数&#160;据</string>
+
+    <!--*************************************************** CommonActionBar ***************************************************-->
+    <string name="baselib_view_actionbar_back">返回</string>
+    <string name="baselib_view_actionbar_title">标题</string>
+    <string name="baselib_view_actionbar_et_hint">请输入&#160;&#8230;</string>
+
+    <!--*************************************************** Network ***************************************************-->
+    <string name="baselib_network_no">网络连接不可用，请检查网络设置</string>
+
+    <!--*************************************************** Loading ***************************************************-->
+    <string name="baselib_loading_msg">加载中&#160;&#8230;</string>
+</resources>

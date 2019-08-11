@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--透明-->
+    <color name="baselib_colorTransparent">#00000000</color>
+    <color name="baselib_colorDefault">#4CDBC4</color>
+    <color name="baselib_color_line">#F2F2F2</color>
+
+    <color name="baselib_color_ffffff">#ffffff</color>
+    <color name="baselib_color_333333">#333333</color>
+    <color name="baselib_color_777777">#777777</color>
+    <color name="baselib_color_c9c9c9">#c9c9c9</color>
+</resources>

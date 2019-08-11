@@ -1,0 +1,54 @@
+/**
+ * 全局统一配置
+ */
+ext {
+    /**
+     * 版本统一管理
+     */
+    versions = [
+            applicationId           : "com.drumbeat.baselib.example",        //应用ID
+            versionCode             : 9,                    //版本号
+            versionName             : "0.0.9",              //版本名称
+
+            compileSdkVersion       : 28,
+            minSdkVersion           : 16,
+            targetSdkVersion        : 28,
+
+            androidSupportSdkVersion: "28.0.0",
+            appcompatVersion        : "1.0.0",
+            constraintlayoutVersion : "1.1.3",
+            junitVersion            : "4.12",
+            runnerVersion           : "1.1.0",
+            espressoVersion         : "3.1.0",
+            annotationsVersion      : "28.0.0",
+            designVersion           : "1.0.0-beta01",
+
+            /*
+            * 三方库依赖
+            * */
+            fastjsonVersion         : "1.1.71.android",
+            blankjUtilcodexVersion  : "1.25.5",
+            butterKnifeVersion      : "10.1.0"
+
+    ]
+
+    dependencies = [
+            "appcompat"           : "androidx.appcompat:appcompat:${versions["appcompatVersion"]}",
+            "constraintlayout"    : "androidx.constraintlayout:constraintlayout:${versions["constraintlayoutVersion"]}",
+            "runner"              : "androidx.test:runner:${versions["runnerVersion"]}",
+            "espresso_core"       : "androidx.test.espresso:espresso-core:${versions["espressoVersion"]}",
+            "junit"               : "junit:junit:${versions["junitVersion"]}",
+            //注释处理器
+            "support_annotations" : "com.android.support:support-annotations:${versions["annotationsVersion"]}",
+            "design"              : "com.android.support:support-annotations:${versions["designVersion"]}",
+
+            /*
+            * 三方库依赖
+            * */
+            "fastjson"            : "com.alibaba:fastjson:${versions["fastjsonVersion"]}",
+            "blankjUtilcodex"     : "com.blankj:utilcodex:${versions["blankjUtilcodexVersion"]}",
+            "butterknife"         : "com.jakewharton:butterknife:${versions["butterKnifeVersion"]}",
+            "butterknife_compiler": "com.jakewharton:butterknife-compiler:${versions["butterKnifeVersion"]}",
+
+    ]
+}
