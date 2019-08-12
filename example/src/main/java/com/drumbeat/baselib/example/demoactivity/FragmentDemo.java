@@ -26,6 +26,11 @@ public class FragmentDemo extends BaseFragment implements IBaseView {
     }
 
     @Override
+    protected void onFragmentVisibilityChange(boolean isVisiable) {
+        showToastLong(isVisiable ? "可见" : "消失");
+    }
+
+    @Override
     public void onEmptyPageClick() {
 
     }

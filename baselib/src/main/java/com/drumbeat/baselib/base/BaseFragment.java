@@ -111,8 +111,15 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     @Override
     public void onResume() {
         super.onResume();
+        onFragmentVisibilityChange(true);
         // 启动页面获取当前网络状态
         processNetworkChange(NetworkUtils.isConnected());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        onFragmentVisibilityChange(false);
     }
 
     @Override
@@ -293,7 +300,15 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
 
     protected abstract int getLayoutId();
 
+    protected abstract void onFragmentVisibilityChange(boolean isVisiable);
+
     /********************************************************* private *********************************************************/
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        onFragmentVisibilityChange(isVisibleToUser);
+    }
 
     /**
      * 初始化无网络提示View的位置和样式
