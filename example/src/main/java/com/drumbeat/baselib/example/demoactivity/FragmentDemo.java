@@ -2,6 +2,8 @@ package com.drumbeat.baselib.example.demoactivity;
 
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import com.drumbeat.baselib.base.BaseFragment;
 import com.drumbeat.baselib.base.mvp.IBaseView;
 import com.drumbeat.baselib.example.R;

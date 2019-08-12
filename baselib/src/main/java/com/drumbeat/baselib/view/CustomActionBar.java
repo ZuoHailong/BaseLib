@@ -490,8 +490,8 @@ public class CustomActionBar extends RelativeLayout {
         etCenter = customActionBar.findViewById(R.id.etCenter);
 
         //确定actionBar高度
-        /*llRootView = customActionBar.findViewById(R.id.llRootView);
-        ViewGroup.LayoutParams layoutParamsRootView = llRootView.getLayoutParams();
+        llRootView = customActionBar.findViewById(R.id.llRootView);
+        /*ViewGroup.LayoutParams layoutParamsRootView = llRootView.getLayoutParams();
         layoutParamsRootView.height = SizeUtils.dp2px(TITLE_BAR_HEIGHT) + BarUtils.getStatusBarHeight();
         llRootView.setLayoutParams(layoutParamsRootView);*/
 
