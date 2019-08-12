@@ -119,7 +119,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void startTimer() {
-        countDownTimer = new CountDownTimer(3300, 1000) {
+        countDownTimer = new CountDownTimer(1300, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 long count = millisUntilFinished / 1000;

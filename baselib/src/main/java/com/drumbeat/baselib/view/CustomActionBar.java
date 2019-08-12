@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -251,6 +252,15 @@ public class CustomActionBar extends RelativeLayout {
         return this;
     }
 
+    /**
+     * 左侧图标：获取 ImageView
+     *
+     * @return
+     */
+    public ImageView getLeftIconView() {
+        return ivLeft;
+    }
+
     /**************************************************** 右侧 ****************************************************/
     /**
      * 右侧layout：是否显示
@@ -353,6 +363,15 @@ public class CustomActionBar extends RelativeLayout {
         return this;
     }
 
+    /**
+     * 右侧图标：获取 ImageView
+     *
+     * @return
+     */
+    public ImageView getRightIconView() {
+        return ivRight;
+    }
+
 
     /**************************************************** 中间文本 ****************************************************/
 
@@ -388,6 +407,15 @@ public class CustomActionBar extends RelativeLayout {
     public CustomActionBar setCenterTitleTextSize(float size) {
         tvCenter.setTextSize(size);
         return this;
+    }
+
+    /**
+     * 中间文本：获取 TextView
+     *
+     * @return
+     */
+    public TextView getCenterTitleTextView() {
+        return tvCenter;
     }
 
     /**************************************************** 中间输入框 ****************************************************/
@@ -447,6 +475,15 @@ public class CustomActionBar extends RelativeLayout {
     }
 
     /**
+     * 中间输入框：获取 EditText
+     *
+     * @return
+     */
+    public EditText getCenterEditTextView() {
+        return etCenter;
+    }
+
+    /**
      * 中间输入框：获取输入内容
      *
      * @return CustomActionBar
@@ -488,13 +525,7 @@ public class CustomActionBar extends RelativeLayout {
         tvRight = customActionBar.findViewById(R.id.tvRight);
         tvCenter = customActionBar.findViewById(R.id.tvCenter);
         etCenter = customActionBar.findViewById(R.id.etCenter);
-
-        //确定actionBar高度
         llRootView = customActionBar.findViewById(R.id.llRootView);
-        /*ViewGroup.LayoutParams layoutParamsRootView = llRootView.getLayoutParams();
-        layoutParamsRootView.height = SizeUtils.dp2px(TITLE_BAR_HEIGHT) + BarUtils.getStatusBarHeight();
-        llRootView.setLayoutParams(layoutParamsRootView);*/
-
         //确定statusBar高度
         viewStatusBar = customActionBar.findViewById(R.id.viewStatusBar);
         LinearLayout.LayoutParams layoutParamsStatusBar = (LinearLayout.LayoutParams) viewStatusBar.getLayoutParams();

@@ -1,9 +1,12 @@
 package com.drumbeat.baselib.example.demoactivity;
 
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
+import com.blankj.utilcode.util.SizeUtils;
 import com.drumbeat.baselib.base.BaseFragment;
 import com.drumbeat.baselib.base.mvp.IBaseView;
 import com.drumbeat.baselib.example.R;
@@ -29,7 +32,14 @@ public class FragmentDemo extends BaseFragment implements IBaseView {
 
     @Override
     public void initView() {
-        customActionBar.setCenterTitleText("Fragment Demo");
+        customActionBar.setCenterTitleText("Fragment Demo")
+                .setRightIconVisiable(true)
+                .setRightIconResource(R.mipmap.ic_arrow_down_white);
+        ImageView rightIconView = customActionBar.getRightIconView();
+        ViewGroup.LayoutParams layoutParams = rightIconView.getLayoutParams();
+        layoutParams.width = SizeUtils.dp2px(12);
+        layoutParams.height = SizeUtils.dp2px(12);
+        rightIconView.setLayoutParams(layoutParams);
         showEmptyView();
     }
 
