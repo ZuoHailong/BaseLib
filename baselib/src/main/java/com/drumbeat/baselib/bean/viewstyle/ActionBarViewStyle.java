@@ -149,10 +149,6 @@ public class ActionBarViewStyle {
         return leftVisiable;
     }
 
-    public boolean isRightVisiable() {
-        return rightVisiable;
-    }
-
     /**
      * 左侧文字：是否显示
      *
@@ -229,6 +225,10 @@ public class ActionBarViewStyle {
     public ActionBarViewStyle setRightVisiable(boolean rightVisiable) {
         this.rightVisiable = rightVisiable;
         return this;
+    }
+
+    public boolean isRightVisiable() {
+        return rightVisiable;
     }
 
     public boolean isRightTextVisiable() {
