@@ -278,6 +278,11 @@ public abstract class BaseActivity extends FragmentActivity implements IBaseView
         updateToastViewStyle(BaseLibHelper.newInstance().getToastViewStyle());
     }
 
+    /**
+     * 空页面点击监听，子Activity可选择重写onEmptyPageClick()方法，以实现诸如“点击空页面重新查询数据”的功能
+     */
+    protected void onEmptyPageClick() {
+    }
 
     /********************************************************* private *********************************************************/
 

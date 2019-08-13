@@ -22,11 +22,6 @@ public interface IBaseView {
 
     void hideLoading();
 
-    /**
-     * 空页面点击监听，子Activity可选择重写onEmptyPageClick()方法，以实现诸如“点击空页面重新查询数据”的功能
-     */
-    void onEmptyPageClick();
-
     /**********************************************非抽象子类实现下述方法**********************************************/
 
     void initView();
