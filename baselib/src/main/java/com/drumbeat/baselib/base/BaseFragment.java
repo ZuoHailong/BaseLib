@@ -109,20 +109,6 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        onFragmentVisibilityChange(true);
-        // 启动页面获取当前网络状态
-        processNetworkChange(NetworkUtils.isConnected());
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        onFragmentVisibilityChange(false);
-    }
-
-    @Override
     public void onStop() {
         super.onStop();
         // 注销网络监听
@@ -297,7 +283,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
         //恢复Toast默认样式
         updateToastViewStyle(BaseLibHelper.newInstance().getToastViewStyle());
     }
-    
+
     /**
      * 空页面点击监听，子Activity可选择重写onEmptyPageClick()方法，以实现诸如“点击空页面重新查询数据”的功能
      */
@@ -306,15 +292,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
 
     protected abstract int getLayoutId();
 
-    protected abstract void onFragmentVisibilityChange(boolean isVisiable);
-
     /********************************************************* private *********************************************************/
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        onFragmentVisibilityChange(isVisibleToUser);
-    }
 
     /**
      * 初始化无网络提示View的位置和样式
