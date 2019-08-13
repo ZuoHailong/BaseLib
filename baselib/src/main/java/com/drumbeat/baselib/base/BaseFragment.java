@@ -109,6 +109,13 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        // 启动页面获取当前网络状态
+        processNetworkChange(NetworkUtils.isConnected());
+    }
+
+    @Override
     public void onStop() {
         super.onStop();
         // 注销网络监听
@@ -343,6 +350,8 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
             if (actionBarViewStyle.getCenterTitleTextColor() != 0) {
                 customActionBar.setCenterTitleTextColor(actionBarViewStyle.getCenterTitleTextColor());
             }
+            //Left
+            customActionBar.setLeftVisiable(actionBarViewStyle.isLeftVisiable());
             //LeftText
             customActionBar.setLeftTextVisiable(actionBarViewStyle.isLeftTextVisiable());
             if (actionBarViewStyle.getLeftTextSize() != 0) {
@@ -361,6 +370,8 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
             if (actionBarViewStyle.getLeftIconResource() != 0) {
                 customActionBar.setLeftIconResource(actionBarViewStyle.getLeftIconResource());
             }
+            //Right
+            customActionBar.setRightVisiable(actionBarViewStyle.isRightVisiable());
             //RightText
             customActionBar.setRightTextVisiable(actionBarViewStyle.isRightTextVisiable());
             if (actionBarViewStyle.getRightTextSize() != 0) {

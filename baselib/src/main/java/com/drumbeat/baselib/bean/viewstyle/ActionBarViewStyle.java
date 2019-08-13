@@ -22,6 +22,8 @@ public class ActionBarViewStyle {
     // 标题：文字颜色
     private int centerTitleTextColor;
 
+    // 左侧：是否显示
+    private boolean leftVisiable = true;
     // 左侧文字：是否显示
     private boolean leftTextVisiable = true;
     // 左侧文字：文字颜色
@@ -36,6 +38,8 @@ public class ActionBarViewStyle {
     // 左侧图标：图标资源ID
     private int leftIconResource;
 
+    // 左侧：是否显示
+    private boolean rightVisiable = true;
     // 右侧文字：是否显示
     private boolean rightTextVisiable = true;
     // 右侧文字：文字颜色
@@ -131,6 +135,25 @@ public class ActionBarViewStyle {
     }
 
     /**
+     * 左侧：是否显示
+     *
+     * @param leftVisiable
+     * @return ActionBarViewStyle.this
+     */
+    public ActionBarViewStyle setLeftVisiable(boolean leftVisiable) {
+        this.leftVisiable = leftVisiable;
+        return this;
+    }
+
+    public boolean isLeftVisiable() {
+        return leftVisiable;
+    }
+
+    public boolean isRightVisiable() {
+        return rightVisiable;
+    }
+
+    /**
      * 左侧文字：是否显示
      *
      * @return 是否显示
@@ -193,6 +216,18 @@ public class ActionBarViewStyle {
 
     public ActionBarViewStyle setLeftIconResource(@DrawableRes int leftIconResource) {
         this.leftIconResource = leftIconResource;
+        return this;
+    }
+
+
+    /**
+     * 右侧：是否显示
+     *
+     * @param rightVisiable
+     * @return ActionBarViewStyle.this
+     */
+    public ActionBarViewStyle setRightVisiable(boolean rightVisiable) {
+        this.rightVisiable = rightVisiable;
         return this;
     }
 
