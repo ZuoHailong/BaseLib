@@ -48,6 +48,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     public CustomLoading customLoading;
     private TextView tvNoNetwork;
     private FrameLayout flContainer;
+    private View childView;
 
     //是否开启网络状态检查，默认开启
     private boolean isCheckNetWork = true;
@@ -73,7 +74,8 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
         customLoading = rootView.findViewById(R.id.customLoading);
         flContainer = rootView.findViewById(R.id.flContainer);
         //将子Fragment加入布局中
-        flContainer.addView(inflater.inflate(getLayoutId(), null));
+        childView = inflater.inflate(getLayoutId(), null);
+        flContainer.addView(childView);
         tvNoNetwork = rootView.findViewById(R.id.tvNoNetwork);
         unBinder = ButterKnife.bind(this, rootView);
         return rootView;
@@ -138,6 +140,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
 
     @Override
     public void onError(String errorMsg) {
+        hideLoading();
         ToastUtils.showShort(errorMsg);
     }
 
@@ -289,6 +292,10 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
         showToastLong(stringRes);
         //恢复Toast默认样式
         updateToastViewStyle(BaseLibHelper.newInstance().getToastViewStyle());
+    }
+
+    protected View getChildView() {
+        return childView;
     }
 
     /**

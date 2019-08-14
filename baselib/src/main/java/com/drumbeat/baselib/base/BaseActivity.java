@@ -42,6 +42,7 @@ public abstract class BaseActivity extends FragmentActivity implements IBaseView
     public CustomLoading customLoading;
     private TextView tvNoNetwork;
     private FrameLayout flContainer;
+    private View childView;
 
     //是否开启网络状态检查，默认开启
     private boolean isCheckNetWork = true;
@@ -83,7 +84,7 @@ public abstract class BaseActivity extends FragmentActivity implements IBaseView
             ActivityUtils.startLauncherActivity();
             return;
         }
-        View childView = getLayoutInflater().inflate(layoutResID, null);
+        childView = getLayoutInflater().inflate(layoutResID, null);
         flContainer.addView(childView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
     }
 
@@ -126,6 +127,7 @@ public abstract class BaseActivity extends FragmentActivity implements IBaseView
 
     @Override
     public void onError(String errorMsg) {
+        hideLoading();
         ToastUtils.showShort(errorMsg);
     }
 
@@ -276,6 +278,10 @@ public abstract class BaseActivity extends FragmentActivity implements IBaseView
         showToastLong(stringRes);
         //恢复Toast默认样式
         updateToastViewStyle(BaseLibHelper.newInstance().getToastViewStyle());
+    }
+
+    protected View getChildView() {
+        return childView;
     }
 
     /**
