@@ -22,14 +22,15 @@ public abstract class BasePresenter<M extends IBaseModel, V extends IBaseView> {
      */
     public void attachView(V view) {
         weakReference = new WeakReference<>(view);
-        if (BuildConfig.DEBUG) {
+        mProxyView = view;
+        /*if (BuildConfig.DEBUG) {
             mProxyView = view;
         } else {
             mProxyView = (V) Proxy.newProxyInstance(
                     view.getClass().getClassLoader(),
                     view.getClass().getInterfaces(),
                     new MvpViewHandler(weakReference.get()));
-        }
+        }*/
         if (this.module == null) {
             this.module = createModule();
         }

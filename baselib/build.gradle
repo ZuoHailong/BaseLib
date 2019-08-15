@@ -26,22 +26,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    /* 30 ~ 36 行代码， */
-    defaultPublishConfig "debug"
-    /*productFlavors {
-        create('all') {
-
-        }
-    }*/
-    publishNonDefault true
-
 }
 
-/* 为了解决 library BuildConfig.DEBUG 总为 false 的问题 */
-configurations {
-    allDebug
-    allRelease
-}
+
 
 allprojects {
     afterEvaluate {
