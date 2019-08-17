@@ -1,18 +1,14 @@
 package com.drumbeat.baselib.example;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.blankj.utilcode.util.BarUtils;
-import com.blankj.utilcode.util.ToastUtils;
-import com.drumbeat.baselib.base.BaseActivity;
+import com.drumbeat.baselib.base.activity.BaseActivity;
 import com.drumbeat.baselib.bean.viewstyle.ActionBarViewStyle;
 import com.drumbeat.baselib.bean.viewstyle.EmptyViewStyle;
 import com.drumbeat.baselib.bean.viewstyle.LoadingViewStyle;

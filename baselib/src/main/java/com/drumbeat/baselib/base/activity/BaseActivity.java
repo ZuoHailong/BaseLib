@@ -1,21 +1,21 @@
-package com.drumbeat.baselib.base;
+package com.drumbeat.baselib.base.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
-import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -31,17 +31,11 @@ import com.drumbeat.baselib.view.CustomActionBar;
 import com.drumbeat.baselib.view.CustomEmptyView;
 import com.drumbeat.baselib.view.CustomLoading;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
 /**
- * Fragment基类
- * Created by ZuoHailong on 2019/7/31.
+ * Activity基类
+ * Created by ZuoHailong on 2019/7/23.
  */
-public abstract class BaseFragment extends Fragment implements IBaseView {
-
-    private Unbinder unBinder;
-    private Context context;
+public abstract class BaseActivity extends FragmentActivity implements IBaseView {
 
     public CustomActionBar customActionBar;
     public CustomEmptyView customEmptyView;
@@ -58,32 +52,23 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     private boolean firstShowEmpty = true, firstShowLoading = true, firstShowNoNet = true;
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        this.context = context;
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.baselib_activity_base, container, false);
-        customActionBar = rootView.findViewById(R.id.customActionBar);
-        customEmptyView = rootView.findViewById(R.id.customEmptyView);
-        //空页面点击监听，子Fragment可选择重写onEmptyPageClick()方法，以实现诸如“点击空页面重新查询数据”的功能
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        super.setContentView(R.layout.baselib_activity_base);
+        //开启沉浸式，最后一个参数在此处没什么用处
+        BarUtils.setStatusBarColor(this, Color.argb(0, 0, 0, 0), false);
+        customActionBar = findViewById(R.id.customActionBar);
+        customEmptyView = findViewById(R.id.customEmptyView);
+        //空页面点击监听，子Activity可选择重写onEmptyPageClick()方法，以实现诸如“点击空页面重新查询数据”的功能
         customEmptyView.setOnClickListener(v -> onEmptyPageClick());
-        customLoading = rootView.findViewById(R.id.customLoading);
-        flContainer = rootView.findViewById(R.id.flContainer);
-        //将子Fragment加入布局中
-        childView = inflater.inflate(getLayoutId(), null);
-        flContainer.addView(childView);
-        tvNoNetwork = rootView.findViewById(R.id.tvNoNetwork);
-        unBinder = ButterKnife.bind(this, rootView);
-        return rootView;
+        customLoading = findViewById(R.id.customLoading);
+        flContainer = findViewById(R.id.flContainer);
+        tvNoNetwork = findViewById(R.id.tvNoNetwork);
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
         //一定要在initView()前面
         initViewActionBar();
         // 上面的initViewXxx()方法一定要在initView()前面
@@ -91,9 +76,20 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
         initData();
     }
 
+    @Override
+    public void setContentView(int layoutResID) {
+        if (flContainer == null) {
+            //出现异常，重启应用
+            ActivityUtils.finishAllActivities();
+            ActivityUtils.startLauncherActivity();
+            return;
+        }
+        childView = getLayoutInflater().inflate(layoutResID, null);
+        flContainer.addView(childView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+    }
 
     @Override
-    public void onStart() {
+    protected void onStart() {
         super.onStart();
         // 注册网络监听
         networkStatusChangedListener = new NetworkUtils.OnNetworkStatusChangedListener() {
@@ -111,31 +107,22 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     }
 
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
         // 启动页面获取当前网络状态
         processNetworkChange(NetworkUtils.isConnected());
     }
 
     @Override
-    public void onStop() {
+    protected void onStop() {
         super.onStop();
         // 注销网络监听
         NetworkUtils.unregisterNetworkStatusChangedListener(networkStatusChangedListener);
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (unBinder != null) {
-            unBinder.unbind();
-        }
-    }
-
-    @Nullable
-    @Override
     public Context getContext() {
-        return context;
+        return this;
     }
 
     @Override
@@ -166,7 +153,6 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
         customLoading.setVisibility(View.GONE);
     }
 
-
     /********************************************************* protected *********************************************************/
 
     /**
@@ -186,7 +172,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
      */
     protected void startActivity(Class<?> clz, Bundle bundle) {
         Intent intent = new Intent();
-        intent.setClass(getContext(), clz);
+        intent.setClass(this, clz);
         if (bundle != null) {
             intent.putExtras(bundle);
         }
@@ -212,7 +198,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
      */
     protected void startActivityForResult(Class<?> cls, Bundle bundle, int requestCode) {
         Intent intent = new Intent();
-        intent.setClass(getContext(), cls);
+        intent.setClass(this, cls);
         if (bundle != null) {
             intent.putExtras(bundle);
         }
@@ -303,8 +289,6 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
      */
     protected void onEmptyPageClick() {
     }
-
-    protected abstract int getLayoutId();
 
     /********************************************************* private *********************************************************/
 

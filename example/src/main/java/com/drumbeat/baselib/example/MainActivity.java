@@ -3,7 +3,7 @@ package com.drumbeat.baselib.example;
 import android.os.Bundle;
 import android.view.View;
 
-import com.drumbeat.baselib.base.BaseActivity;
+import com.drumbeat.baselib.base.activity.BaseActivity;
 import com.drumbeat.baselib.example.demoactivity.ActionBarDemoActivity;
 import com.drumbeat.baselib.example.demoactivity.FragmentDemoActivity;
 import com.drumbeat.baselib.example.demoactivity.OtherDemoSetsActivity;

@@ -1,4 +1,4 @@
-package com.drumbeat.baselib.base;
+package com.drumbeat.baselib.base.fragment;
 
 import android.os.Bundle;
 

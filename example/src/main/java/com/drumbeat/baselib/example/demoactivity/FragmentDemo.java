@@ -4,10 +4,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.core.content.ContextCompat;
-
 import com.blankj.utilcode.util.SizeUtils;
-import com.drumbeat.baselib.base.BaseFragment;
+import com.drumbeat.baselib.base.fragment.BaseFragment;
 import com.drumbeat.baselib.base.mvp.IBaseView;
 import com.drumbeat.baselib.example.R;
 

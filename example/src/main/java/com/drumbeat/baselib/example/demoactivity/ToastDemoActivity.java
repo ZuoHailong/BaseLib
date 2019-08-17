@@ -6,7 +6,7 @@ import android.view.View;
 
 import androidx.core.content.ContextCompat;
 
-import com.drumbeat.baselib.base.BaseActivity;
+import com.drumbeat.baselib.base.activity.BaseActivity;
 import com.drumbeat.baselib.bean.viewstyle.ToastViewStyle;
 import com.drumbeat.baselib.example.R;
 

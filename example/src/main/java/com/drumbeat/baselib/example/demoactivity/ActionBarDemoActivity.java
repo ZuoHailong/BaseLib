@@ -1,12 +1,11 @@
 package com.drumbeat.baselib.example.demoactivity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.widget.RadioGroup;
 
 import androidx.annotation.Nullable;
 
-import com.drumbeat.baselib.base.BaseActivity;
+import com.drumbeat.baselib.base.activity.BaseActivity;
 import com.drumbeat.baselib.example.R;
 import com.drumbeat.baselib.view.CustomActionBar;
 
