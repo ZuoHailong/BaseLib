@@ -446,6 +446,9 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
             if (loadingViewStyle.getIconResource() != 0) {
                 customLoading.setIconResource(loadingViewStyle.getIconResource());
             }
+            if (loadingViewStyle.getBiasVertical() > 0) {
+                customLoading.setBiasVertical(loadingViewStyle.getBiasVertical());
+            }
         }
     }
 

@@ -16,6 +16,8 @@ public class LoadingViewStyle {
     // 图标资源ID
     private int iconResource;
 
+    private float biasVertical;
+
     public int getIconColor() {
         return iconColor;
     }
@@ -33,5 +35,13 @@ public class LoadingViewStyle {
     public LoadingViewStyle setIconResource(@DrawableRes int drawableRes) {
         this.iconResource = drawableRes;
         return this;
+    }
+
+    public float getBiasVertical() {
+        return biasVertical;
+    }
+
+    public void setBiasVertical(float biasVertical) {
+        this.biasVertical = biasVertical;
     }
 }

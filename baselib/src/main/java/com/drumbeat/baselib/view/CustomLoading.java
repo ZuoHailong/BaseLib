@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
@@ -18,6 +19,7 @@ import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 import com.drumbeat.baselib.R;
@@ -43,6 +45,13 @@ public class CustomLoading extends RelativeLayout {
 
     public CustomLoading setIconResource(@DrawableRes int drawableRes) {
         ivLoading.setImageResource(drawableRes);
+        return this;
+    }
+
+    public CustomLoading setBiasVertical(float biasVertical) {
+        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) ivLoading.getLayoutParams();
+        layoutParams.verticalBias = biasVertical;
+        ivLoading.setLayoutParams(layoutParams);
         return this;
     }
 
