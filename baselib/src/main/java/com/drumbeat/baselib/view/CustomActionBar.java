@@ -163,6 +163,18 @@ public class CustomActionBar extends RelativeLayout {
     }
 
     /**
+     * 自定义左侧View
+     *
+     * @param view 左侧View
+     * @return
+     */
+    public CustomActionBar setLeftView(View view) {
+        clLeft.removeAllViews();
+        clLeft.addView(view);
+        return this;
+    }
+
+    /**
      * 左侧layout：点击监听
      *
      * @param clickListener
@@ -270,6 +282,18 @@ public class CustomActionBar extends RelativeLayout {
      */
     public CustomActionBar setRightVisiable(boolean isVisiable) {
         clRight.setVisibility(isVisiable ? VISIBLE : GONE);
+        return this;
+    }
+
+    /**
+     * 自定义右侧View
+     *
+     * @param view 右侧View
+     * @return
+     */
+    public CustomActionBar setRightView(View view) {
+        clRight.removeAllViews();
+        clRight.addView(view);
         return this;
     }
 
