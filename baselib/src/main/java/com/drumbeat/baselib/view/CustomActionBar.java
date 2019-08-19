@@ -169,6 +169,13 @@ public class CustomActionBar extends RelativeLayout {
      * @return
      */
     public CustomActionBar setLeftView(View view) {
+        if (view == null) {
+            return this;
+        }
+        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.topToTop = R.id.clRight;
+        layoutParams.bottomToBottom = R.id.clRight;
+        view.setLayoutParams(layoutParams);
         clLeft.removeAllViews();
         clLeft.addView(view);
         return this;
@@ -292,6 +299,14 @@ public class CustomActionBar extends RelativeLayout {
      * @return
      */
     public CustomActionBar setRightView(View view) {
+        if (view == null) {
+            return this;
+        }
+        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.topToTop = R.id.clRight;
+        layoutParams.bottomToBottom = R.id.clRight;
+        view.setLayoutParams(layoutParams);
+
         clRight.removeAllViews();
         clRight.addView(view);
         return this;

@@ -1,4 +1,4 @@
-package com.drumbeat.baselib.view.recylerview;
+package com.drumbeat.baselib.view.recyclerview;
 
 import android.content.Context;
 import android.util.SparseArray;

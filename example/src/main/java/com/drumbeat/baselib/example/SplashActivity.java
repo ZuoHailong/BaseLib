@@ -65,6 +65,7 @@ public class SplashActivity extends BaseActivity {
         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             loadingViewStyle.setIconColor(R.color.color_ff0000);
         }*/
+        loadingViewStyle.setBiasVertical(0.5f);
         BaseLibHelper.newInstance().initViewStyle(loadingViewStyle);
 
         //初始化 kjToast

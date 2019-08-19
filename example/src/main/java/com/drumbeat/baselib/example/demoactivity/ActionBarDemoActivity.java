@@ -2,6 +2,7 @@ package com.drumbeat.baselib.example.demoactivity;
 
 import android.os.Bundle;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -83,6 +84,12 @@ public class ActionBarDemoActivity extends BaseActivity {
                     break;
             }
         });
+
+        TextView textView = new TextView(getContext());
+        textView.setText("测试");
+
+        customActionBar.setRightView(textView);
+
     }
 
     @Override
