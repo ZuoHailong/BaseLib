@@ -52,10 +52,10 @@ dependencies {
     * */
 
     // fastjson https://github.com/alibaba/fastjson
-    api rootProject.ext.dependencies["fastjson"]
+    implementation rootProject.ext.dependencies["fastjson"]
     // utils库 https://blankj.com/2016/07/31/android-utils-code/
-    api rootProject.ext.dependencies["blankjUtilcodex"]
-    api rootProject.ext.dependencies["butterknife"]
+    implementation rootProject.ext.dependencies["blankjUtilcodex"]
+    implementation rootProject.ext.dependencies["butterknife"]
     annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
 
 }

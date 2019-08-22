@@ -47,7 +47,7 @@ ext {
             "fastjson"            : "com.alibaba:fastjson:${versions["fastjsonVersion"]}",
             "blankjUtilcodex"     : "com.blankj:utilcodex:${versions["blankjUtilcodexVersion"]}",
             "butterknife"         : "com.jakewharton:butterknife:${versions["butterKnifeVersion"]}",
-            "butterknife_compiler": "com.jakewharton:butterknife-compiler:${versions["butterKnifeVersion"]}",
+            "butterknife_compiler": "com.jakewharton:butterknife-compiler:${versions["butterKnifeVersion"]}"
 
     ]
 }
