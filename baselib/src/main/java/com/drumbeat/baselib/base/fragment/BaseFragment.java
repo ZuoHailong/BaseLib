@@ -76,6 +76,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
         childView = inflater.inflate(getLayoutId(), null);
         flContainer.addView(childView);
         tvNoNetwork = rootView.findViewById(R.id.tvNoNetwork);
+        customLoading = new CustomLoading(context);
         unBinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
