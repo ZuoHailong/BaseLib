@@ -29,49 +29,31 @@ public class CustomLoading {
 
     private Dialog mLoadingDialog;
     private Context context;
-    private ConstraintLayout layoutContainer;
     private ImageView ivLoading;
 
     private RotateAnimation rotateAnimation;
-    private boolean cancelable = false;
     private boolean isShow;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private int colorRes;
+    private int drawableRes;
+    private float biasVertical;
+    private Interpolator interpolator;
+    private long durationMillis;
+    private boolean cancelable;
+
     public CustomLoading setIconColor(@ColorRes int colorRes) {
-        Drawable drawable = ivLoading.getDrawable();
-        drawable.setTint(ContextCompat.getColor(context, colorRes));
+        this.colorRes = colorRes;
         return this;
     }
 
     public CustomLoading setIconResource(@DrawableRes int drawableRes) {
-        ivLoading.setImageResource(drawableRes);
+        this.drawableRes = drawableRes;
         return this;
     }
 
     public CustomLoading setBiasVertical(float biasVertical) {
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) ivLoading.getLayoutParams();
-        layoutParams.verticalBias = biasVertical;
-        ivLoading.setLayoutParams(layoutParams);
+        this.biasVertical = biasVertical;
         return this;
-    }
-
-    /**
-     * 开始动画
-     */
-    public void startAnimation() {
-        if (rotateAnimation != null) {
-            ivLoading.clearAnimation();
-            ivLoading.setAnimation(rotateAnimation);
-        }
-    }
-
-    /**
-     * 停止动画
-     */
-    public void stopAnimation() {
-        if (rotateAnimation != null) {
-            ivLoading.clearAnimation();
-        }
     }
 
     /**
@@ -79,8 +61,9 @@ public class CustomLoading {
      *
      * @param interpolator android.view.animation.Interpolator接口的子类
      */
-    public void setInterpolator(@NonNull Interpolator interpolator) {
-        rotateAnimation.setInterpolator(interpolator);
+    public CustomLoading setInterpolator(@NonNull Interpolator interpolator) {
+        this.interpolator = interpolator;
+        return this;
     }
 
     /**
@@ -88,10 +71,9 @@ public class CustomLoading {
      *
      * @param durationMillis 时长，毫秒
      */
-    public void setDuration(long durationMillis) {
-        if (durationMillis > 0) {
-            rotateAnimation.setDuration(durationMillis);
-        }
+    public CustomLoading setDuration(long durationMillis) {
+        this.durationMillis = durationMillis;
+        return this;
     }
 
     /**
@@ -102,7 +84,39 @@ public class CustomLoading {
         return this;
     }
 
-    public void show(){
+    public void show() {
+
+        View customLoading = View.inflate(context, R.layout.baselib_view_custom_loading, null);
+
+        ivLoading = customLoading.findViewById(R.id.ivLoading);
+        ConstraintLayout layoutContainer = customLoading.findViewById(R.id.layoutContainer);
+
+        rotateAnimation = new RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        rotateAnimation.setRepeatCount(-1);
+        //匀速动画LinearInterpolator，加速动画AccelerateInterpolator，减速动画DecelerateInterpolator
+        rotateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+        rotateAnimation.setDuration(700);
+        rotateAnimation.setStartOffset(10);
+
+        if (colorRes > 0 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Drawable drawable = ivLoading.getDrawable();
+            drawable.setTint(ContextCompat.getColor(context, colorRes));
+        }
+        if (colorRes > 0) {
+            ivLoading.setImageResource(drawableRes);
+        }
+        if (biasVertical > 0) {
+            ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) ivLoading.getLayoutParams();
+            layoutParams.verticalBias = biasVertical;
+            ivLoading.setLayoutParams(layoutParams);
+        }
+        if (interpolator != null) {
+            rotateAnimation.setInterpolator(interpolator);
+        }
+        if (durationMillis > 0) {
+            rotateAnimation.setDuration(durationMillis);
+        }
+
         mLoadingDialog = new Dialog(context, R.style.baselib_LoadingDialog);
         // 设置返回键无效
         mLoadingDialog.setCancelable(cancelable);
@@ -110,6 +124,7 @@ public class CustomLoading {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT));
         mLoadingDialog.show();
+        ivLoading.setAnimation(rotateAnimation);
         isShow = true;
     }
 
@@ -128,21 +143,5 @@ public class CustomLoading {
 
     public CustomLoading(Context context) {
         this.context = context;
-        initView();
-    }
-
-    private void initView() {
-        View customLoading = View.inflate(context, R.layout.baselib_view_custom_loading, null);
-
-        ivLoading = customLoading.findViewById(R.id.ivLoading);
-        layoutContainer = customLoading.findViewById(R.id.layoutContainer);
-
-        rotateAnimation = new RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        rotateAnimation.setRepeatCount(-1);
-        //匀速动画LinearInterpolator，加速动画AccelerateInterpolator，减速动画DecelerateInterpolator
-        rotateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        rotateAnimation.setDuration(700);
-        rotateAnimation.setStartOffset(10);
-
     }
 }

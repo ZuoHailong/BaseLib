@@ -2,6 +2,8 @@ package com.drumbeat.baselib.example.demoactivity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 
 import com.drumbeat.baselib.base.activity.BaseActivity;
 import com.drumbeat.baselib.example.R;
@@ -37,6 +39,21 @@ public class OtherDemoSetsActivity extends BaseActivity {
         });
         findViewById(R.id.btnShowLoading).setOnClickListener(v -> {
             showLoading();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    handler.sendEmptyMessage(0);
+                }
+            }, 1000);
+        });
+        findViewById(R.id.btnShowEmpty).setOnClickListener(v -> {
+            showEmptyView();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    handler.sendEmptyMessage(1);
+                }
+            }, 500);
         });
     }
 
@@ -58,5 +75,19 @@ public class OtherDemoSetsActivity extends BaseActivity {
     public void initData() {
 
     }
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 0:
+                    hideLoading();
+                    break;
+                case 1:
+                    hideEmptyView();
+                    break;
+            }
+        }
+    };
 
 }

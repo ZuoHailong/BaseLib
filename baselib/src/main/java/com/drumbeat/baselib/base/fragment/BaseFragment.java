@@ -154,7 +154,6 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
             firstShowLoading = false;
         }
         customLoading.show();
-        customLoading.startAnimation();
     }
 
     /**
@@ -162,7 +161,6 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
      */
     @Override
     public void hideLoading() {
-        customLoading.stopAnimation();
         customLoading.dismiss();
     }
 
