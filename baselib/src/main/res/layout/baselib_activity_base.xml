@@ -25,12 +25,6 @@
             android:layout_height="match_parent"
             android:visibility="gone" />
 
-        <com.drumbeat.baselib.view.CustomLoading
-            android:id="@+id/customLoading"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
-
         <TextView
             android:id="@+id/tvNoNetwork"
             android:layout_width="match_parent"

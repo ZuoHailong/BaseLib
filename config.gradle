@@ -7,8 +7,8 @@ ext {
      */
     versions = [
             applicationId           : "com.drumbeat.baselib.example",        //应用ID
-            versionCode             : 25,                    //版本号
-            versionName             : "0.2.5",              //版本名称
+            versionCode             : 26,                    //版本号
+            versionName             : "0.2.6",              //版本名称
 
             compileSdkVersion       : 28,
             minSdkVersion           : 16,
@@ -26,7 +26,7 @@ ext {
             * 三方库依赖
             * */
             fastjsonVersion         : '1.2.59',
-            blankjUtilcodexVersion  : "1.25.5",
+            blankjUtilcodexVersion  : "1.25.9",
             butterKnifeVersion      : "10.1.0"
 
     ]

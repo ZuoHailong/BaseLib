@@ -71,7 +71,6 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
         customEmptyView = rootView.findViewById(R.id.customEmptyView);
         //空页面点击监听，子Fragment可选择重写onEmptyPageClick()方法，以实现诸如“点击空页面重新查询数据”的功能
         customEmptyView.setOnClickListener(v -> onEmptyPageClick());
-        customLoading = rootView.findViewById(R.id.customLoading);
         flContainer = rootView.findViewById(R.id.flContainer);
         //将子Fragment加入布局中
         childView = inflater.inflate(getLayoutId(), null);
@@ -153,7 +152,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
             initLoading();
             firstShowLoading = false;
         }
-        customLoading.setVisibility(View.VISIBLE);
+        customLoading.show();
         customLoading.startAnimation();
     }
 
@@ -163,7 +162,7 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     @Override
     public void hideLoading() {
         customLoading.stopAnimation();
-        customLoading.setVisibility(View.GONE);
+        customLoading.dismiss();
     }
 
 

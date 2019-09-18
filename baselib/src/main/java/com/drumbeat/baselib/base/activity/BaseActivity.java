@@ -61,9 +61,9 @@ public abstract class BaseActivity extends FragmentActivity implements IBaseView
         customEmptyView = findViewById(R.id.customEmptyView);
         //空页面点击监听，子Activity可选择重写onEmptyPageClick()方法，以实现诸如“点击空页面重新查询数据”的功能
         customEmptyView.setOnClickListener(v -> onEmptyPageClick());
-        customLoading = findViewById(R.id.customLoading);
         flContainer = findViewById(R.id.flContainer);
         tvNoNetwork = findViewById(R.id.tvNoNetwork);
+        customLoading = new CustomLoading(this);
     }
 
     @Override
@@ -140,7 +140,7 @@ public abstract class BaseActivity extends FragmentActivity implements IBaseView
             initLoading();
             firstShowLoading = false;
         }
-        customLoading.setVisibility(View.VISIBLE);
+        customLoading.show();
         customLoading.startAnimation();
     }
 
@@ -150,7 +150,7 @@ public abstract class BaseActivity extends FragmentActivity implements IBaseView
     @Override
     public void hideLoading() {
         customLoading.stopAnimation();
-        customLoading.setVisibility(View.GONE);
+        customLoading.dismiss();
     }
 
     /********************************************************* protected *********************************************************/

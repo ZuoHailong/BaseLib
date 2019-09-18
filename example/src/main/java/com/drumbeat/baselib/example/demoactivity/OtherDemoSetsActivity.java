@@ -35,18 +35,9 @@ public class OtherDemoSetsActivity extends BaseActivity {
             customLoading.setIconResource(R.mipmap.ic_launcher);
             customEmptyView.setIconResource(R.mipmap.ic_launcher);
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        showLoading();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        hideLoading();
+        findViewById(R.id.btnShowLoading).setOnClickListener(v -> {
+            showLoading();
+        });
     }
 
     @Override
@@ -60,7 +51,7 @@ public class OtherDemoSetsActivity extends BaseActivity {
                 .setRightTextVisiable(false)
                 .setRightIconVisiable(false)
                 .setLeftTextVisiable(false);
-        showEmptyView();
+//        showEmptyView();
     }
 
     @Override

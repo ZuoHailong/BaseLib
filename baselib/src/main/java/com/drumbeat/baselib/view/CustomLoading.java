@@ -1,19 +1,16 @@
 package com.drumbeat.baselib.view;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.Interpolator;
-import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
@@ -28,14 +25,16 @@ import com.drumbeat.baselib.R;
  * 自定义圆形进度条
  * Created by ZuoHailong on 2019/7/30.
  */
-public class CustomLoading extends RelativeLayout {
+public class CustomLoading {
 
+    private Dialog mLoadingDialog;
     private Context context;
-    private View customLoading;
     private ConstraintLayout layoutContainer;
     private ImageView ivLoading;
 
     private RotateAnimation rotateAnimation;
+    private boolean cancelable = false;
+    private boolean isShow;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public CustomLoading setIconColor(@ColorRes int colorRes) {
@@ -95,23 +94,48 @@ public class CustomLoading extends RelativeLayout {
         }
     }
 
+    /**
+     * 是否可取消
+     */
+    public CustomLoading setCancelable(boolean cancelable) {
+        this.cancelable = cancelable;
+        return this;
+    }
+
+    public void show(){
+        mLoadingDialog = new Dialog(context, R.style.baselib_LoadingDialog);
+        // 设置返回键无效
+        mLoadingDialog.setCancelable(cancelable);
+        mLoadingDialog.setContentView(layoutContainer, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT));
+        mLoadingDialog.show();
+        isShow = true;
+    }
+
+    public void dismiss() {
+        if (mLoadingDialog != null && isShow) {
+            ivLoading.clearAnimation();
+            mLoadingDialog.dismiss();
+            mLoadingDialog = null;
+            isShow = false;
+        }
+    }
+
+    public boolean isShowing() {
+        return isShow;
+    }
+
     public CustomLoading(Context context) {
-        this(context, null);
-    }
-
-    public CustomLoading(Context context, AttributeSet attrs) {
-        super(context, attrs);
         this.context = context;
-        initView(context);
+        initView();
     }
 
-    private void initView(Context context) {
-        customLoading = View.inflate(context, R.layout.baselib_view_custom_loading, this);
+    private void initView() {
+        View customLoading = View.inflate(context, R.layout.baselib_view_custom_loading, null);
 
         ivLoading = customLoading.findViewById(R.id.ivLoading);
         layoutContainer = customLoading.findViewById(R.id.layoutContainer);
-        layoutContainer.setOnClickListener(v -> {
-        });
 
         rotateAnimation = new RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         rotateAnimation.setRepeatCount(-1);
@@ -119,5 +143,6 @@ public class CustomLoading extends RelativeLayout {
         rotateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
         rotateAnimation.setDuration(700);
         rotateAnimation.setStartOffset(10);
+
     }
 }
