@@ -7,8 +7,8 @@ ext {
      */
     versions = [
             applicationId           : "com.drumbeat.baselib.example",        //应用ID
-            versionCode             : 24,                    //版本号
-            versionName             : "0.2.4",              //版本名称
+            versionCode             : 25,                    //版本号
+            versionName             : "0.2.5",              //版本名称
 
             compileSdkVersion       : 28,
             minSdkVersion           : 16,

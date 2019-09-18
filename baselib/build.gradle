@@ -28,8 +28,6 @@ android {
 
 }
 
-
-
 allprojects {
     afterEvaluate {
         android {

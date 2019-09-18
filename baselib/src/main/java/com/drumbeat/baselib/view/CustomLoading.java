@@ -32,6 +32,7 @@ public class CustomLoading extends RelativeLayout {
 
     private Context context;
     private View customLoading;
+    private ConstraintLayout layoutContainer;
     private ImageView ivLoading;
 
     private RotateAnimation rotateAnimation;
@@ -108,6 +109,9 @@ public class CustomLoading extends RelativeLayout {
         customLoading = View.inflate(context, R.layout.baselib_view_custom_loading, this);
 
         ivLoading = customLoading.findViewById(R.id.ivLoading);
+        layoutContainer = customLoading.findViewById(R.id.layoutContainer);
+        layoutContainer.setOnClickListener(v -> {
+        });
 
         rotateAnimation = new RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         rotateAnimation.setRepeatCount(-1);
